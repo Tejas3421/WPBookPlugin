@@ -23,7 +23,26 @@ function register_custom_post_type_books(){
     );
     
     register_post_type( "Book", $options);
-    }
-    add_action( 'init', 'register_custom_post_type_books');
+}
+
+add_action( 'init', 'register_custom_post_type_books');
     
 
+function register_custom_custom_taxonomy_book_catagery(){
+
+    $labels=array(
+        'name'=>'Books Catagory',
+        'singular-name'=>'Book Catagory'
+    );
+    
+    $options = array(
+        'labels' => $labels,
+        'hierarchical'=> true,
+        'rewrite'=>array('slug'=>'book-catagory')
+    );
+    
+    register_taxonomy( 'book-catagory', array('books'), $options);
+
+}
+    
+add_action( 'init', 'register_custom_custom_taxonomy_book_catagery');
